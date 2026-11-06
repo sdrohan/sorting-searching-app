@@ -1,5 +1,6 @@
 
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.TabRow
 import androidx.compose.runtime.Composable
@@ -8,6 +9,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import ui.SearchScreen
+import ui.SortScreen
 import ui.components.TabButton
 import ui.theme.AppTheme
 import utilities.MenuItem
@@ -27,6 +30,13 @@ fun App(currentScreen: MutableState<MenuItem>) {
                     selected = currentScreen.value == MenuItem.Sort,
                     onClick = { currentScreen.value = MenuItem.Sort })
             }
+
+        Box{
+            when (currentScreen.value) {
+                MenuItem.Search -> SearchScreen()
+                MenuItem.Sort -> SortScreen()
+            }
+        }
 
         }
 }
